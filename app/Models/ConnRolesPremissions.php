@@ -13,7 +13,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class ConnRolesPremissions extends Model
 {
+    /**
+     * @var bool
+     */
+    protected $updated_at = false;
+    /**
+     * Table name
+     * @var string
+     */
     protected $table = 'pz_connections_roles_permissions';
-
+    /**
+     * Column names
+     * @var array
+     */
     protected $fillable = ['role_id', 'permission_id'];
 }

@@ -11,7 +11,15 @@ namespace App\models;
 
 class Ingridients extends CoreModel
 {
+    /**
+     * Table name
+     * @var string
+     */
     protected $table = 'pz_ingredients';
 
+    /**
+     * Column names
+     * @var array
+     */
     protected $fillable = ['id', 'name', 'calories'];
 }

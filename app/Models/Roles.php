@@ -11,7 +11,15 @@ namespace App\models;
 
 class Roles extends CoreModel
 {
+    /**
+     * Table name
+     * @var string
+     */
     protected $table = 'pz_roles';
 
+    /**
+     * Column names
+     * @var array
+     */
     protected $fillable = ['id', 'name', 'comment'];
 }

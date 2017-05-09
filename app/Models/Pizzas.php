@@ -11,7 +11,15 @@ namespace App\models;
 
 class Pizzas extends CoreModel
 {
+    /**
+     * Table name
+     * @var string
+     */
     protected $table = '';
 
+    /**
+     * Column names
+     * @var array
+     */
     protected $fillable = ['id', 'cheese_id', 'pizza_pad_id', 'user_id', 'name', 'calories', 'comment'];
 }

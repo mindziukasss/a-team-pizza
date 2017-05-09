@@ -9,9 +9,17 @@
 namespace App\models;
 
 
-class Premissions extends CoreModel
+class Permissions extends CoreModel
 {
+    /**
+     * Table name
+     * @var string
+     */
     protected $table = 'pz_permissions';
 
+    /**
+     * Column names
+     * @var array
+     */
     protected $fillable = ['id', 'name', 'comment'];
 }
