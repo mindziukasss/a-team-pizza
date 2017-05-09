@@ -11,7 +11,7 @@ namespace App\models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ConnIngridientsPizza extends Model
+class ConnIngredientsPizza extends Model
 {
     /**
      * @var bool
