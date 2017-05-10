@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Controller;
 
-class PizzasController extends Controller {
+class PizzasController extends APIbaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -12,8 +12,16 @@ class PizzasController extends Controller {
 	 */
 	public function index()
 	{
-		//
+	    //
 	}
+
+    /**
+     *
+     */
+    public function apiIndex()
+    {
+        //
+    }
 
 	/**
 	 * Show the form for creating a new resource.
@@ -21,7 +29,7 @@ class PizzasController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function apiCreate()
 	{
 		//
 	}
