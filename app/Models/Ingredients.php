@@ -9,7 +9,7 @@
 namespace App\models;
 
 
-class Ingridients extends CoreModel
+class Ingredients extends CoreModel
 {
     /**
      * Table name
