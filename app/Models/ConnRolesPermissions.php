@@ -11,7 +11,7 @@ namespace App\models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ConnRolesPremissions extends Model
+class ConnRolesPermissions extends Model
 {
     /**
      * @var bool
