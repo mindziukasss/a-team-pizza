@@ -114,8 +114,8 @@ Route::group(['prefix' => 'admin'], function (){
 
         	Route::get('/', ['uses' => 'UsersController@show']);
         	Route::get('/edit', ['as' => 'app.users.edit','uses' => 'UsersController@edit']);
-        	Route::post('/{id}/edit', [ 'uses' => 'UsersController@update']);
-        	Route::delete('/{id}/delete', ['as' => 'app.users.destroy', 'uses' => 'UsersController@destroy']);
+        	Route::post('/edit', [ 'uses' => 'UsersController@update']);
+        	Route::delete('/delete', ['as' => 'app.users.destroy', 'uses' => 'UsersController@destroy']);
     	});
     });
 });
