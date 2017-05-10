@@ -13,28 +13,6 @@ class IngredientsSeeder extends Seeder
      */
     public function run()
     {
-//    Salami, 35
-//    Kumpis, 24
-//    Pievagrybiai, 15
-//    Alyvuogės, 20
-//    Konservuoti svogūnėliai, 18
-//    Chalapos paprikos, 25
-//    Konservuotos paprikos, 27
-//    Aitriosios paprikos, 20
-//    Marinuoti agurkėliai, 19
-//    Šviežios paprikos, 33
-//    Konservuoti ananasai, 26
-//    Vištiena, 19
-//    Tunas, 33
-//    Šoninė, 29
-//    Malta kiauliena, 39
-//    Svogūnai, 15
-//    Saulėje džiovinti pomidorai, 19
-//    Artišokai, 19
-//    Marinuoti kelmučiai, 12
-//    Gražgarstės, 17
-
-
         $ingredients = [
             ['id' => 'salami', 'name' => 'Salami', 'calories' => 35],
             ['id' => 'ham', 'name' => 'Kumpis', 'calories' => 24],

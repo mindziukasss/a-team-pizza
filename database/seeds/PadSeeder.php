@@ -13,8 +13,6 @@ class PadSeeder extends Seeder
      */
     public function run()
     {
-//        pilno grūdo miltų picos padas, 197 kalorijų
-//        mielinis picos padas, 378 kalorijų
 
         $pads = [
             ['id' => 'full_grain', 'name' => 'pilno grūdo miltų picos padas', 'calories' => 197],
