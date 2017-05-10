@@ -12,9 +12,8 @@ class APIbaseController extends Controller {
 	 */
 	public function apiIndex()
 	{
-	    //
+	     return response()->json(['success' => false, 'message' => 'Method not implemented']);
 	}
-
 
 	/**
 	 * Store a newly created resource in storage.
@@ -24,7 +23,7 @@ class APIbaseController extends Controller {
 	 */
 	public function apiStore()
 	{
-		//
+		 return response()->json(['success' => false, 'message' => 'Method not implemented']);
 	}
 
 	/**
@@ -36,7 +35,7 @@ class APIbaseController extends Controller {
 	 */
 	public function apiShow($id)
 	{
-		//
+		 return response()->json(['success' => false, 'message' => 'Method not implemented']);
 	}
 
 	/**
@@ -48,7 +47,7 @@ class APIbaseController extends Controller {
 	 */
 	public function apiUpdate($id)
 	{
-		//
+		 return response()->json(['success' => false, 'message' => 'Method not implemented']);
 	}
 
 	/**
@@ -60,7 +59,7 @@ class APIbaseController extends Controller {
 	 */
 	public function apiDestroy($id)
 	{
-		//
+		 return response()->json(['success' => false, 'message' => 'Method not implemented']);
 	}
 
 }

@@ -12,15 +12,16 @@ class PizzasController extends APIbaseController {
 	 */
 	public function index()
 	{
-	    //
+	    
 	}
 
-    /**
-     *
-     */
+	/**
+	 * [apiIndex description]
+	 * @return [type] [description]
+	 */
     public function apiIndex()
     {
-        //
+        return "jason";
     }
 
 	/**
@@ -29,7 +30,7 @@ class PizzasController extends APIbaseController {
 	 *
 	 * @return Response
 	 */
-	public function apiCreate()
+	public function create()
 	{
 		//
 	}
@@ -46,6 +47,15 @@ class PizzasController extends APIbaseController {
 	}
 
 	/**
+	 * [apiStore description]
+	 * @return [type] [description]
+	 */
+	public function apiStore()
+	{
+
+	}
+
+	/**
 	 * Display the specified resource.
 	 * GET /pizzas/{id}
 	 *
@@ -55,6 +65,15 @@ class PizzasController extends APIbaseController {
 	public function show($id)
 	{
 		//
+	}
+	/**
+	 * [apiShow description]
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
+	public function apiShow($id)
+	{
+
 	}
 
 	/**
@@ -82,6 +101,16 @@ class PizzasController extends APIbaseController {
 	}
 
 	/**
+	 * [apiUpdate description]
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
+	public function apiUpdate($id)
+	{
+		//
+	}
+
+	/**
 	 * Remove the specified resource from storage.
 	 * DELETE /pizzas/{id}
 	 *
@@ -91,6 +120,16 @@ class PizzasController extends APIbaseController {
 	public function destroy($id)
 	{
 		//
+	}
+
+	/**
+	 * [apiDestroy description]
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
+	public function apiDestroy($id)
+	{
+
 	}
 
 }
