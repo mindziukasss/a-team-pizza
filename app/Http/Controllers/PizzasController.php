@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Controller;
 
-class PizzasController extends Controller {
+class PizzasController extends APIbaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -12,8 +12,17 @@ class PizzasController extends Controller {
 	 */
 	public function index()
 	{
-		//
+	    
 	}
+
+	/**
+	 * [apiIndex description]
+	 * @return [type] [description]
+	 */
+    public function apiIndex()
+    {
+        return "jason";
+    }
 
 	/**
 	 * Show the form for creating a new resource.
@@ -38,6 +47,15 @@ class PizzasController extends Controller {
 	}
 
 	/**
+	 * [apiStore description]
+	 * @return [type] [description]
+	 */
+	public function apiStore()
+	{
+
+	}
+
+	/**
 	 * Display the specified resource.
 	 * GET /pizzas/{id}
 	 *
@@ -47,6 +65,15 @@ class PizzasController extends Controller {
 	public function show($id)
 	{
 		//
+	}
+	/**
+	 * [apiShow description]
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
+	public function apiShow($id)
+	{
+
 	}
 
 	/**
@@ -74,6 +101,16 @@ class PizzasController extends Controller {
 	}
 
 	/**
+	 * [apiUpdate description]
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
+	public function apiUpdate($id)
+	{
+		//
+	}
+
+	/**
 	 * Remove the specified resource from storage.
 	 * DELETE /pizzas/{id}
 	 *
@@ -83,6 +120,16 @@ class PizzasController extends Controller {
 	public function destroy($id)
 	{
 		//
+	}
+
+	/**
+	 * [apiDestroy description]
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
+	public function apiDestroy($id)
+	{
+
 	}
 
 }
