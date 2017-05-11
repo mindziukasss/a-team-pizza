@@ -12,17 +12,20 @@ class PizzasController extends APIbaseController {
 	 */
 	public function index()
 	{
-	    
+	    return view('frontend');
 	}
 
-	/**
-	 * [apiIndex description]
-	 * @return [type] [description]
-	 */
-    public function apiIndex()
+    /**
+     * Display a listing of the resource.
+     * GET /pizzas
+     *
+     * @return Response
+     */
+    public function adminIndex()
     {
-        return "jason";
+        return view('admin');
     }
+
 
 	/**
 	 * Show the form for creating a new resource.
@@ -30,7 +33,45 @@ class PizzasController extends APIbaseController {
 	 *
 	 * @return Response
 	 */
+
+    public function apiIndex()
+    {
+
+    }
+
+
+    /**
+     * Show the form for creating a new resource.
+     * GET /pizzas/create
+     *
+     * @return Response
+     */
+
 	public function create()
+    {
+
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     * GET /pizzas/create
+     *
+     * @return Response
+     */
+
+    public function adminCreate()
+    {
+        return view('admin');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     * GET /pizzas/create
+     *
+     * @return Response
+     */
+
+	public function apiCreate()
 	{
 		//
 	}
@@ -42,14 +83,25 @@ class PizzasController extends APIbaseController {
 	 * @return Response
 	 */
 	public function store()
-	{
-		//
-	}
+{
+    //
+}
 
-	/**
-	 * [apiStore description]
-	 * @return [type] [description]
-	 */
+    /**
+     * [apiStore description]
+     * @return [type] [description]
+     */
+
+    public function adminStore()
+    {
+
+    }
+
+    /**
+     * [apiStore description]
+     * @return [type] [description]
+     */
+
 	public function apiStore()
 	{
 
@@ -66,6 +118,18 @@ class PizzasController extends APIbaseController {
 	{
 		//
 	}
+
+    /**
+     * Display the specified resource.
+     * GET /pizzas/{id}
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function adminShow($id)
+    {
+        //
+    }
 	/**
 	 * [apiShow description]
 	 * @param  [type] $id [description]
@@ -85,7 +149,7 @@ class PizzasController extends APIbaseController {
 	 */
 	public function edit($id)
 	{
-		//
+
 	}
 
 	/**
@@ -95,16 +159,52 @@ class PizzasController extends APIbaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
+    public function adminEdit($id)
+    {
+
+    }
+
+    /**
+     * Update the specified resource in storage.
+     * PUT /pizzas/{id}
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function apiEdit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     * PUT /pizzas/{id}
+     *
+     * @param  int  $id
+     * @return Response
+     */
+
 	public function update($id)
 	{
 		//
 	}
 
+    /**
+     * [apiUpdate description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function adminUpdate($id)
+    {
+        //
+    }
 	/**
 	 * [apiUpdate description]
 	 * @param  [type] $id [description]
 	 * @return [type]     [description]
 	 */
+
+
 	public function apiUpdate($id)
 	{
 		//
@@ -121,6 +221,18 @@ class PizzasController extends APIbaseController {
 	{
 		//
 	}
+
+    /**
+     * Remove the specified resource from storage.
+     * DELETE /pizzas/{id}
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function adminDestroy($id)
+    {
+        //
+    }
 
 	/**
 	 * [apiDestroy description]
