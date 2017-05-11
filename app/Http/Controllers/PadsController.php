@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Controller;
 
-class PadsController extends Controller {
+class PadsController extends APIbaseController {
 
 	/**
 	 * Display a listing of the resource.
