@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\models\Pizzas;
 use Illuminate\Routing\Controller;
 
 class PizzasController extends APIbaseController {
@@ -12,7 +13,9 @@ class PizzasController extends APIbaseController {
 	 */
 	public function index()
 	{
-	    return view('frontend');
+        $config = [];
+        $config['pizzas'] = Pizzas::get()->toArray();
+	    return view('frontend.list', $config);
 	}
 
     /**
@@ -23,7 +26,9 @@ class PizzasController extends APIbaseController {
      */
     public function adminIndex()
     {
-        return view('admin');
+        $config = [];
+        $config['pizzas'] = Pizzas::get()->toArray();
+        return view('admin.list', $config);
     }
 
 
@@ -36,7 +41,7 @@ class PizzasController extends APIbaseController {
 
     public function apiIndex()
     {
-
+        return Pizzas::get()->toArray();
     }
 
 
@@ -116,7 +121,9 @@ class PizzasController extends APIbaseController {
 	 */
 	public function show($id)
 	{
-		//
+        $config = [];
+        $config['pizzas'] = Pizzas::find($id)->toArray();
+        return view('frontend.single', $config);
 	}
 
     /**
@@ -128,7 +135,9 @@ class PizzasController extends APIbaseController {
      */
     public function adminShow($id)
     {
-        //
+        $config = [];
+        $config['pizzas'] = Pizzas::find($id)->toArray();
+        return view('admin.single', $config);
     }
 	/**
 	 * [apiShow description]
