@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Controller;
 
-class UsersController extends Controller {
+class UsersController extends APIbaseController {
 
 	/**
 	 * Display a listing of the resource.
