@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Controller;
 
-class IngredientsController extends Controller {
+class IngredientsController extends APIbaseController {
 
 	/**
 	 * Display a listing of the resource.
