@@ -13,15 +13,14 @@ class CheesesController extends APIbaseController {
 	 */
 	public function adminIndex()
 	{
-		$config = [];
-		$config['editRoute'] = 'app.cheeses.edit';
-		$config['deleteRoute'] = 'app.cheeses.destroy';
-		$config['list'] = Cheeses::get()->toArray();
+        $config['list'] = Cheeses::get()->toArray();
+        $config['editRoute'] = 'app.cheeses.edit';
+        $config['deleteRoute'] = 'app.cheeses.destroy';
+        $config['showRoute'] = 'app.cheese.show';
+        $config['createSingle'] = 'app.cheeses.create';
 
+        return view('admin.list', $config );
 
-
-
-		return view('admin.list', $config );
 	}
 
 	/**
@@ -55,7 +54,12 @@ class CheesesController extends APIbaseController {
 	 */
 	public function adminShow($id)
 	{
-		//
+        $config['single'] = Cheeses::find($id)->toArray();
+        $config['editRoute'] = 'app.cheeses.edit';
+        $config['deleteRoute'] = 'app.cheeses.destroy';
+        $config['list'] = 'app.cheeses.index';
+
+        return view('admin.single', $config);
 	}
 
 	/**
