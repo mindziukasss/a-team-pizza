@@ -15,9 +15,8 @@ class IngredientsController extends APIbaseController {
 	 */
 	public function adminIndex()
 	{
-	    $config = [];
-
-	    $config['list'] = Ingredients::get()->toArray();
+	    $config = $this->listBladeData();
+        $config['list'] = Ingredients::get()->toArray();
 
 	    return view('admin.list', $config);
 	}
@@ -30,7 +29,21 @@ class IngredientsController extends APIbaseController {
 	 */
 	public function adminCreate()
 	{
-		//
+	    $data = [];
+        $array = ['petras', 'vilmantas', 'mykolas'];
+        foreach($array as $item) {
+            array_push($data, $item);
+        }
+
+        $this->formFormData($data, $array);
+
+        $config = [];
+        $config['data'] = $data;
+        $config['route'] = 'app.ingredients.create';
+        $array = Ingredients::find(0);
+        $config['item'] = $array->getFillable();
+
+        return view('admin.createform', $config);
 	}
 
 	/**
@@ -41,7 +54,17 @@ class IngredientsController extends APIbaseController {
 	 */
 	public function adminStore()
 	{
-		//
+        $config = $this->listBladeData();
+        $config['list'] = Ingredients::get()->toArray();
+        $data = request()->all();
+
+        Ingredients::create(
+            [
+                'name' => $data['name'],
+                'calories' => $data['calories']
+            ]
+        );
+        return redirect()->route('app.ingredients.index', $config);
 	}
 
 	/**
@@ -53,7 +76,9 @@ class IngredientsController extends APIbaseController {
 	 */
 	public function adminShow($id)
 	{
-		//
+		$config = [];
+		$config['item'] = Ingredients::find($id)->toArray();
+		return view('admin.single', $config);
 	}
 
 	/**
@@ -65,7 +90,11 @@ class IngredientsController extends APIbaseController {
 	 */
 	public function adminEdit($id)
 	{
-		//
+        $config = [];
+        $config['route'] = 'app.ingredients.edit';
+        $config['id'] = $id;
+        $config['item'] = Ingredients::find($id)->toArray();
+        return view('admin.ingredientform', $config);
 	}
 
 	/**
@@ -77,7 +106,17 @@ class IngredientsController extends APIbaseController {
 	 */
 	public function adminUpdate($id)
 	{
-		//
+        $config = $this->listBladeData();
+        $config['list'] = Ingredients::get()->toArray();
+        $data = request()->all();
+        $record = Ingredients::find($id);
+        $record->update(
+            [
+                'name' => $data['name'],
+                'calories' => $data['calories']
+            ]
+        );
+        return redirect()->route('app.ingredients.index', $config);
 	}
 
 	/**
@@ -89,7 +128,22 @@ class IngredientsController extends APIbaseController {
 	 */
 	public function adminDestroy($id)
 	{
-		//
+        Ingredients::destroy($id);
+        return view('admin.list');
 	}
 
+	private function listBladeData() {
+        $config = [];
+        $config['show'] = 'app.ingredients.show';
+        $config['create'] = 'app.ingredients.create';
+        $config['delete'] = 'app.ingredients.destroy';
+        $config['edit'] = 'app.ingredients.edit';
+
+
+        return $config;
+    }
+
+    private function formFormData(...$arg) {
+	    dd($arg);
+    }
 }

@@ -2,8 +2,9 @@
 
 @section('content-list')
     <div class="container">
-    <h2>Bordered Table</h2>
-    <p>The .table-bordered class adds borders to a table:</p>
+        <a href="{{ route($create) }}">
+            <button type="button"  class="btn btn-info col-md-offset-11">Add new</button>
+        </a>
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -27,18 +28,20 @@
                     </td>
                     @endforeach
                         <td>
-                            <button onclick="deleteItem('{{ route($deleteRoute, $record['id']) }}')" class="btn btn-danger">Delete</button>
+                            <button onclick="deleteItem('{{ route($delete, $record['id']) }}')" class="btn btn-danger">Delete</button>
                         </td>
 
                         <td>
-                            <a href="{{ route($editRoute, $record['id']) }}">
+                            <a href="{{ route($edit, $record['id']) }}">
                                 <button type="button"  class="btn btn-primary">Edit</button>
                             </a>
                         </td>
 
 
                         <td>
+                            <a href="{{ route($show, $record['id']) }}">
                             <button type="button"  class="btn btn-success">View</button>
+                            </a>
                         </td>
                     </tr>
 
@@ -48,6 +51,7 @@
         </thead>
 
     </table>
+
     </div>
 
 
