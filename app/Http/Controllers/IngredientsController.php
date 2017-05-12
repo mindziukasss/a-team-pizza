@@ -1,6 +1,9 @@
-<?php namespace App\Http\Controllers;
+<?php
 
-use Illuminate\Routing\Controller;
+namespace App\Http\Controllers;
+
+use App\models\Ingredients;
+
 
 class IngredientsController extends APIbaseController {
 
@@ -12,7 +15,11 @@ class IngredientsController extends APIbaseController {
 	 */
 	public function adminIndex()
 	{
-		//
+	    $config = [];
+
+	    $config['list'] = Ingredients::get()->toArray();
+
+	    return view('admin.list', $config);
 	}
 
 	/**

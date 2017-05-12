@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\models\Cheeses;
 use Illuminate\Routing\Controller;
 
 class CheesesController extends APIbaseController {
@@ -12,7 +13,15 @@ class CheesesController extends APIbaseController {
 	 */
 	public function adminIndex()
 	{
-		//
+		$config = [];
+		$config['editRoute'] = 'app.cheeses.edit';
+		$config['deleteRoute'] = 'app.cheeses.destroy';
+		$config['list'] = Cheeses::get()->toArray();
+
+
+
+
+		return view('admin.list', $config );
 	}
 
 	/**
