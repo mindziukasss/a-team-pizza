@@ -4,7 +4,7 @@ use App\models\Cheeses;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class cheesesSeeder extends Seeder
+class CheesesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
