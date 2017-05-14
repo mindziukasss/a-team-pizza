@@ -27,7 +27,7 @@ Route::group(['prefix' => 'admin'], function (){
 
        Route::group(['prefix' => '{id}'], function () {
 
-           Route::get('/', ['uses' => 'CheesesController@adminShow']);
+           Route::get('/', ['as' => 'app.cheese.show', 'uses' => 'CheesesController@adminShow']);
            Route::get('/edit', ['as' => 'app.cheeses.edit','uses' => 'CheesesController@adminEdit']);
            Route::post('/edit', [ 'uses' => 'CheesesController@adminUpdate']);
            Route::delete('/delete', ['as' => 'app.cheeses.destroy', 'uses' => 'CheesesController@adminDestroy']);
@@ -42,7 +42,7 @@ Route::group(['prefix' => 'admin'], function (){
 
         Route::group(['prefix' => '{id}'], function () {
 
-            Route::get('/', [ 'uses' => 'IngredientsController@adminShow']);
+            Route::get('/', [ 'as' => 'app.ingredient.show', 'uses' => 'IngredientsController@adminShow']);
             Route::get('/edit', ['as' => 'app.ingredients.edit', 'uses' => 'IngredientsController@adminEdit']);
             Route::post('/edit', [ 'uses' => 'IngredientsController@adminUpdate']);
             Route::delete('/delete', ['as' => 'app.ingredients.destroy', 'uses' => 'IngredientsController@adminDestroy']);
