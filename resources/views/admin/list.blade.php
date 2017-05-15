@@ -1,24 +1,26 @@
 @extends('admin.admin')
 
 @section('content-list')
-    <div class="container">
-        <h2>#</h2>
-        <a href="{{ route($createSingle) }}">Create new</a>
 
+
+    <div class="container">
+        <h2>{{ucfirst($tableName)}}s table</h2>
+        <a href="{{ route($create) }}">Create new {{$tableName}}</a>
         <table class="table table-bordered">
             <thead>
             <tr>
-                @foreach($list[0] as $key => $item  )
+                @foreach($list[0] as $key => $value)
                     <th>{{$key}}</th>
                 @endforeach
-                <th>delete</th>
                 <th>edit</th>
-                <th>view</th>
+                <th>show</th>
+                <th>delete</th>
 
             </tr>
-
-            @foreach($list as $key => $record  )
-                <tr>
+            </thead>
+            <tbody>
+            @foreach($list as $key => $record)
+                <tr id="{{$record['id']}}">
                     @foreach($record as $key => $value)
                         <td>
                             {{$value}}
@@ -49,6 +51,7 @@
 
             </thead>
 
+
         </table>
     </div>
 
@@ -57,7 +60,6 @@
 
 @section('scripts')
     <script>
-
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -75,8 +77,15 @@
                 },
                 error: function () {
                     alert('ERROR');
+                dataType: 'json',
+                success: function (response) {
+                    $('#' + response.id).remove();
+                },
+                error: function () {
+                    alert('ERROR')
                 }
             });
         }
+
     </script>
 @endsection

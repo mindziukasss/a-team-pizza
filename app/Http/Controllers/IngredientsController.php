@@ -5,123 +5,133 @@ namespace App\Http\Controllers;
 use App\models\Ingredients;
 use PhpParser\Node\Stmt\Return_;
 
+class IngredientsController extends APIbaseController {
 
-class IngredientsController extends APIbaseController
-{
+	/**
+	 * Display a listing of the resource.
+	 * GET /ingridients
+	 *
+	 * @return Response
+	 */
+	public function adminIndex()
+	{
+        $dataFromModel = new Ingredients;
+        $config = $this->listBladeData();
+        $config['tableName'] = $dataFromModel->getTableName();
+        $config['list'] = $dataFromModel->get()->toArray();
 
-    /**
-     * Display a listing of the resource.
-     * GET /ingridients
-     *
-     * @return Response
-     */
-    public function adminIndex()
-    {
+	    return view('admin.list', $config);
+	}
 
+	/**
+	 * Show the form for creating a new resource.
+	 * GET /ingridients/create
+	 *
+	 * @return Response
+	 */
+	public function adminCreate()
+	{
+
+        $config['route'] = 'app.ingredients.create';
+        $array = Ingredients::find(1);
+        $config['item'] = $array->getFillable();
+
+        return view('admin.createform', $config);
+	}
+
+	/**
+	 * Store a newly created resource in storage.
+	 * POST /ingridients
+	 *
+	 * @return Response
+	 */
+	public function adminStore()
+	{
+        $config = $this->listBladeData();
         $config['list'] = Ingredients::get()->toArray();
-        $config['editRoute'] = 'app.ingredients.edit';
-        $config['deleteRoute'] = 'app.ingredients.destroy';
-        $config['showRoute'] = 'app.ingredient.show';
-        $config['createSingle'] = 'app.ingredients.create';
-
-        return view('admin.list', $config);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     * GET /ingridients/create
-     *
-     * @return Response
-     */
-    public function adminCreate()
-    {
-        $config = Ingredients::get()->toArray();
-        $config['createRoute'] = 'app.ingredients.create';
-        return view('admin.createForm', $config);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     * POST /ingridients
-     *
-     * @return Response
-     */
-    public function adminStore()
-    {
         $data = request()->all();
-        Ingredients::create(array(
-            'name' => $data['name'],
-            'calories' => $data['calories']
-        ));
 
-        return redirect()->route('app.ingredients.index');
-    }
+        Ingredients::create(
+            [
+                'name' => $data['name'],
+                'calories' => $data['calories']
+            ]
+        );
+        return redirect()->route('app.ingredients.index', $config);
+	}
 
+	/**
+	 * Display the specified resource.
+	 * GET /ingridients/{id}
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function adminShow($id)
+	{
+		$config = [];
+		$config['item'] = Ingredients::find($id)->toArray();
+		return view('admin.single', $config);
+	}
 
-    /**
-     * Display the specified resource.
-     * GET /ingridients/{id}
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function adminShow($id)
-    {
+	/**
+	 * Show the form for editing the specified resource.
+	 * GET /ingridients/{id}/edit
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function adminEdit($id)
+	{
+        $config = [];
+        $config['route'] = 'app.ingredients.edit';
+        $config['id'] = $id;
+        $config['item'] = Ingredients::find($id)->toArray();
+        return view('admin.editform', $config);
+	}
 
-        $config['single'] = Ingredients::find($id)->toArray();
-        $config['editRoute'] = 'app.ingredients.edit';
-        $config['deleteRoute'] = 'app.ingredients.destroy';
-        $config['list'] = 'app.ingredients.index';
-
-        return view('admin.single', $config);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * GET /ingridients/{id}/edit
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function adminEdit($id)
-    {
-        $config['singleEdit'] = Ingredients::find($id)->toArray();
-        $config['editRoute'] = route('app.ingredients.edit', $id);
-
-        return view('admin.editForm', $config);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * PUT /ingridients/{id}
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function adminUpdate($id)
-    {
-        $config['single'] = Ingredients::find($id);
+	/**
+	 * Update the specified resource in storage.
+	 * PUT /ingridients/{id}
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function adminUpdate($id)
+	{
+        $config = $this->listBladeData();
+        $config['list'] = Ingredients::get()->toArray();
         $data = request()->all();
         $record = Ingredients::find($id);
-        $record->update([
-            'name' => $data['name'],
-            'calories' => $data['calories']
-        ]);
+        $record->update(
+            [
+                'name' => $data['name'],
+                'calories' => $data['calories']
+            ]
+        );
+        return redirect()->route('app.ingredients.index', $config);
+	}
 
-        return redirect()->route('app.ingredients.index');
+	/**
+	 * Remove the specified resource from storage.
+	 * DELETE /ingridients/{id}
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function adminDestroy($id)
+	{
+        if (Ingredients::destroy($id)){
+            return ["success" => true, "id" => $id];
+        }
+	}
+
+	private function listBladeData() {
+        $config = [];
+        $config['show'] = 'app.ingredients.show';
+        $config['create'] = 'app.ingredients.create';
+        $config['delete'] = 'app.ingredients.destroy';
+        $config['edit'] = 'app.ingredients.edit';
+        return $config;
     }
-
-    /**
-     * Remove the specified resource from storage.
-     * DELETE /ingridients/{id}
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function adminDestroy($id)
-    {
-        Ingredients::destroy($id);
-        return redirect()->route('app.ingredients.index');
-    }
-
 }
