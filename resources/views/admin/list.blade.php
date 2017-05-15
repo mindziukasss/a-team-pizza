@@ -2,7 +2,6 @@
 
 @section('content-list')
 
-
     <div class="container">
         <h2>{{ucfirst($tableName)}}s table</h2>
         <a href="{{ route($create) }}">Create new {{$tableName}}</a>
@@ -26,32 +25,22 @@
                             {{$value}}
                         </td>
                     @endforeach
-                    <td>
-                        <button onclick="deleteItem('{{ route($deleteRoute, $record['id']) }}')" class="btn btn-danger">
-                            Delete
-                        </button>
-                    </td>
-
-                    <td>
-                        <a href="{{ route($editRoute, $record['id']) }}">
+                    <td><a href="{{ route($edit,$record['id']) }}">
                             <button type="button" class="btn btn-primary">Edit</button>
                         </a>
                     </td>
-
-
-                    <td>
-                        <a href="{{ route($showRoute, $record['id']) }}">
-                            <button type="button" class="btn btn-success">View</button>
+                    <td><a href="{{ route($show, $record['id']) }}">
+                            <button type="button" class="btn btn-success">Show</button>
                         </a>
                     </td>
+                    <td>
+                        <button onclick="deleteItem( '{{ route($delete, $record['id']) }}' )"
+                                class="btn btn-danger">Delete
+                        </button>
+                    </td>
                 </tr>
-
             @endforeach
-
-
-            </thead>
-
-
+            </tbody>
         </table>
     </div>
 
@@ -65,18 +54,10 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
         function deleteItem(route) {
             $.ajax({
                 url: route,
                 type: 'DELETE',
-                //data : {},
-                dataType: 'json',
-                success: function () {
-                    alert('DELETED');
-                },
-                error: function () {
-                    alert('ERROR');
                 dataType: 'json',
                 success: function (response) {
                     $('#' + response.id).remove();
