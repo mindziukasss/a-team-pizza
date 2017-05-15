@@ -15,8 +15,10 @@ class IngredientsController extends APIbaseController {
 	 */
 	public function adminIndex()
 	{
-	    $config = $this->listBladeData();
-        $config['list'] = Ingredients::get()->toArray();
+        $dataFromModel = new Ingredients;
+        $config = $this->listBladeData();
+        $config['tableName'] = $dataFromModel->getTableName();
+        $config['list'] = $dataFromModel->get()->toArray();
 
 	    return view('admin.list', $config);
 	}
@@ -29,18 +31,9 @@ class IngredientsController extends APIbaseController {
 	 */
 	public function adminCreate()
 	{
-	    $data = [];
-        $array = ['petras', 'vilmantas', 'mykolas'];
-        foreach($array as $item) {
-            array_push($data, $item);
-        }
 
-        $this->formFormData($data, $array);
-
-        $config = [];
-        $config['data'] = $data;
         $config['route'] = 'app.ingredients.create';
-        $array = Ingredients::find(0);
+        $array = Ingredients::find(1);
         $config['item'] = $array->getFillable();
 
         return view('admin.createform', $config);
@@ -94,7 +87,7 @@ class IngredientsController extends APIbaseController {
         $config['route'] = 'app.ingredients.edit';
         $config['id'] = $id;
         $config['item'] = Ingredients::find($id)->toArray();
-        return view('admin.ingredientform', $config);
+        return view('admin.editform', $config);
 	}
 
 	/**
@@ -128,8 +121,9 @@ class IngredientsController extends APIbaseController {
 	 */
 	public function adminDestroy($id)
 	{
-        Ingredients::destroy($id);
-        return view('admin.list');
+        if (Ingredients::destroy($id)){
+            return ["success" => true, "id" => $id];
+        }
 	}
 
 	private function listBladeData() {
@@ -138,12 +132,6 @@ class IngredientsController extends APIbaseController {
         $config['create'] = 'app.ingredients.create';
         $config['delete'] = 'app.ingredients.destroy';
         $config['edit'] = 'app.ingredients.edit';
-
-
         return $config;
-    }
-
-    private function formFormData(...$arg) {
-	    dd($arg);
     }
 }
