@@ -139,3 +139,8 @@ Route::group(['prefix' => 'pizzas'], function () {
         Route::delete('/delete', ['as' => 'app.pizzas.destroy', 'uses' => 'PizzasController@destroy']);
     });
 });
+
+Auth::routes(
+
+);
+    Route::get('/home', 'HomeController@index')->name('home');
