@@ -54,7 +54,7 @@ class PizzasController extends APIbaseController {
 
 	public function create()
     {
-
+        return "Please order!";
     }
 
     /**
