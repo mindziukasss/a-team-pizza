@@ -29,4 +29,8 @@ class ConnIngredientsPizza extends Model
      * @var array
      */
     protected $fillable = ['pizza_id', 'ingredient_id'];
+
+    public function toppings() {
+        return $this->hasOne('pz_ingredients', 'id', 'ingredient_id');
+    }
 }
