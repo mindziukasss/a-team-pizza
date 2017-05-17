@@ -32,7 +32,7 @@ class CreateAdmin extends Command
         $this->comment('Creating admin user');
         $name = $this->ask('insert name');
         $email = $this->ask('insert email');
-        $password = $this->ask('insert password');
+        $password = $this->secret('insert password');
         $phone = $this->ask('insert phone');
         $address = $this->ask('insert address');
         $comment = $this->ask('additional comments?');
@@ -42,7 +42,7 @@ class CreateAdmin extends Command
             'id' => Uuid::uuid4(),
             'name' => $name,
             'email' => $email,
-            'password' => $password,
+            'password' => bcrypt($password),
             'phone' => $phone,
             'address' => $address,
             'comment' => $comment
