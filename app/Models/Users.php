@@ -30,4 +30,8 @@ class Users extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function role() {
+        return $this->belongsToMany(Roles::class, 'pz_connections_users_roles', 'user_id', 'role_id' );
+    }
 }
