@@ -15,6 +15,8 @@ class Users extends Authenticatable
 {
     use Notifiable;
 
+    public $incrementing = false;
+
     protected $table = 'pz_users';
     /**
      * The attributes that are mass assignable.

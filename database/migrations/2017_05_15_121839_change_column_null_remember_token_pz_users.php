@@ -14,7 +14,7 @@ class ChangeColumnNullRememberTokenPzUsers extends Migration
     public function up()
     {
         Schema::table('pz_users', function(Blueprint $table) {
-            $table->string('remember_token')->nullable();
+            $table->string('remember_token')->nullable()->change();
         });
     }
 
