@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class UserCheck
+class AdminCheck
 {
     /**
      * Handle an incoming request.
@@ -15,8 +15,9 @@ class UserCheck
      */
     public function handle($request, Closure $next)
     {
-        // dd(auth()->user()->role);
-        if (in_array('member', auth()->user()->role()->pluck('id')->toArray()))
+        $role = auth()->user()->role()->pluck('id')->toArray();
+//         dd(auth()->user()->role);
+        if (in_array('super-admin', $role))
         {
             return $next($request);
 

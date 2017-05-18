@@ -1,7 +1,9 @@
 <?php namespace App\Http\Controllers;
 
+use App\models\Ingredients;
 use App\models\Pizzas;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Cache;
 
 class PizzasController extends APIbaseController {
 
@@ -54,7 +56,11 @@ class PizzasController extends APIbaseController {
 
 	public function create()
     {
-        return "Please order!";
+        $config['ingredients'] = Ingredients::pluck('name','id')->toArray();
+        $config['specIngrdint'] = Cache::get('specIngriednt');
+
+
+        return view('frontend.createdForm', $config);
     }
 
     /**

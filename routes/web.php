@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 
 
-Route::group(['prefix' => 'admin'], function (){
+Route::group(['prefix' => 'admin', 'middleware'=> ['auth', 'super_admin']], function (){
 
    Route::group(['prefix' => 'cheeses'], function (){
 
