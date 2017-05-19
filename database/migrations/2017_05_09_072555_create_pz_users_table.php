@@ -24,6 +24,7 @@ class CreatePzUsersTable extends Migration {
 			$table->string('phone');
 			$table->string('address')->nullable();
 			$table->string('comment')->nullable();
+            $table->string('remember_token')->nullable();
 		});
 	}
 
