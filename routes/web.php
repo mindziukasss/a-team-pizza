@@ -144,3 +144,8 @@ Auth::routes(
 
 );
     Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'play'], function () {
+    Route::get('/', ['as' => 'app.play.create', 'uses' => 'PlayController@create' ]);
+    Route::post('/create', ['as' => 'app.play.store', 'uses' => 'PlayController@store' ]);
+    });
