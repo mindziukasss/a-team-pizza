@@ -46,6 +46,10 @@ class IngredientsController extends APIbaseController {
 	 */
 	public function adminStore()
 	{
+        $resources = request()->file('image');
+        $uploadController = new RecoursesController();
+        $record = $uploadController->upload($resources);
+
         $config = $this->listBladeData();
         $config['list'] = Ingredients::get()->toArray();
         $data = request()->all();
@@ -53,7 +57,8 @@ class IngredientsController extends APIbaseController {
         Ingredients::create(
             [
                 'name' => $data['name'],
-                'calories' => $data['calories']
+                'calories' => $data['calories'],
+                'image' => $record->id,
             ]
         );
         return redirect()->route('app.ingredients.index', $config);

@@ -62,4 +62,6 @@
     </ul>
     </div>
 
+    {{--{{$record}}--}}
+
 @endsection

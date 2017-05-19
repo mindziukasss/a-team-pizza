@@ -44,6 +44,8 @@ class PlayController extends Controller {
             "recourse_id" => $record->id,
         ]);
 
+//        return redirect()->route('app.play.create', $record);
+
         dd($record);
 	}
 
