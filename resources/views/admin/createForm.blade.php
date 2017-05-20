@@ -10,10 +10,16 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                {!! Form::open(
+            array(
+                'route' => 'app.ingredients.create',
+                'class' => 'form',
+                'novalidate' => 'novalidate',
+                'files' => true)) !!}
                 {!! Form::model(['url' => route($route)]) !!}
                 <table class="table table-bordered">
                     @foreach($item as $key => $value)
-                        @if($value != 'created_at' && $value != 'updated_at' && $value != 'deleted_at' && $value != 'id' && $value != 'count')
+                        @if($value != 'created_at' && $value != 'updated_at' && $value != 'deleted_at' && $value != 'id' && $value != 'count' && $value != 'recourse_id')
                             <tr>
                                 <td>{{$value}}</td>
                                 <td>
@@ -24,6 +30,7 @@
                         @endif
                     @endforeach
                 </table>
+                {!! Form::file('image') !!}
                 {{Form::submit('Submit!')}}
 
                 @if(isset($data))
@@ -32,3 +39,5 @@
             </div>
         </div>
     </div>
+
+@endsection

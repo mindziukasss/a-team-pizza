@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnRememberTokenPzUsers extends Migration
+class AddColumnRecourseIdToPzIngredients extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddColumnRememberTokenPzUsers extends Migration
      */
     public function up()
     {
-        Schema::table('pz_users', function(Blueprint $table) {
-            $table->string('remember_token');
+        Schema::table('pz_ingredients', function(Blueprint $table) {
+            $table->string('recourse_id',36)->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ class AddColumnRememberTokenPzUsers extends Migration
      */
     public function down()
     {
-        Schema::table('pz_users', function(Blueprint $table) {
-            $table->dropColumn('remember_token');
+        Schema::table('pz_ingredients', function(Blueprint $table) {
+            $table->dropColumn('recourse_id');
         });
     }
 }
