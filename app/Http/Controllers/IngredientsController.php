@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\models\Ingredients;
+use App\models\ConnUserRecourses;
+use App\models\Recourses;
 use PhpParser\Node\Stmt\Return_;
 
 class IngredientsController extends APIbaseController {
@@ -21,6 +23,8 @@ class IngredientsController extends APIbaseController {
         $config['list'] = $dataFromModel->get()->toArray();
 
 	    return view('admin.list', $config);
+	    
+
 	}
 
 	/**
@@ -50,17 +54,24 @@ class IngredientsController extends APIbaseController {
         $uploadController = new RecoursesController();
         $record = $uploadController->upload($resources);
 
+       $config = ConnUserRecourses::create([
+            "user_id" => auth()->user()->id,
+            "recourse_id" => $record->id,
+        ]);
+
         $config = $this->listBladeData();
         $config['list'] = Ingredients::get()->toArray();
         $data = request()->all();
 
-        Ingredients::create(
+         $config = Ingredients::create(
             [
                 'name' => $data['name'],
                 'calories' => $data['calories'],
-                'image' => $record->id,
+                'recourse_id' => $record->id,
             ]
         );
+
+         dd($config);
         return redirect()->route('app.ingredients.index', $config);
 	}
 
