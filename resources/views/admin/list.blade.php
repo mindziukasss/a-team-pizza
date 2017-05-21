@@ -11,6 +11,7 @@
                 @foreach($list[0] as $key => $value)
                     <th>{{$key}}</th>
                 @endforeach
+                <th>Image</th>
                 <th>edit</th>
                 <th>show</th>
                 <th>delete</th>
@@ -19,12 +20,20 @@
             </thead>
             <tbody>
             @foreach($list as $key => $record)
+            
                 <tr id="{{$record['id']}}">
                     @foreach($record as $key => $value)
                         <td>
                             {{$value}}
                         </td>
                     @endforeach
+                    @foreach ($images as $image)
+                        {{-- {{dd($images)}} --}}
+                        <td>
+                            <img src="{{ asset($image['path'] ) }}" height="25" width="30">
+                        </td>
+                    @endforeach
+
                     <td><a href="{{ route($edit,$record['id']) }}">
                             <button type="button" class="btn btn-primary">Edit</button>
                         </a>

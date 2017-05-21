@@ -17,7 +17,7 @@ class RecoursesController extends Controller {
                 "mime_type" => $image->getMimetype(),
             ];
 
-        $path = 'upload/' . date ("Y/m/d");
+        $path = 'upload/' . date ("Y/m/d/");
         $fileName = Carbon::now()->timestamp . '-' .$image->getClientOriginalName();
         $image->move(public_path($path), $fileName);
         $data["path"] = $path . $fileName;

@@ -21,7 +21,8 @@ class IngredientsController extends APIbaseController {
         $config = $this->listBladeData();
         $config['tableName'] = $dataFromModel->getTableName();
         $config['list'] = $dataFromModel->get()->toArray();
-
+        $config['images'] = Recourses::get()->toArray();
+         // dd($config);
 	    return view('admin.list', $config);
 	    
 
@@ -71,7 +72,7 @@ class IngredientsController extends APIbaseController {
             ]
         );
 
-         dd($config);
+        
         return redirect()->route('app.ingredients.index', $config);
 	}
 
