@@ -7,7 +7,8 @@
             {!! Form::open(['url' => route($route, $id)]) !!}
             <table class="table table-bordered">
             @foreach($item as $key => $value)
-                @if($key != 'created_at' && $key != 'updated_at' && $key != 'deleted_at' && $key != 'id' && $key != 'count')
+                @if($key != 'created_at' && $key != 'updated_at' && $key != 'deleted_at' && $key != 'id' && $key != 'count'
+                && $key != 'recourse_id')
                 <tr>
                     <td>{{$key}}</td>
                     <td>

@@ -22,4 +22,5 @@ class Ingredients extends CoreModel
      * @var array
      */
     protected $fillable = ['id', 'name', 'calories', 'recourse_id'];
+
 }
